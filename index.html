@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Recipe Notes</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">My Recipe Notes</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">ホーム</a>
+        <a href="recipes.html">レシピ一覧</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="site-eyebrow">handwritten kitchen notes</p>
+      <h1 class="site-title">My Recipe Notes</h1>
+      <p class="site-desc">試行錯誤しながら作り上げたレシピたち。</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- 最新レシピ -->
+    <section class="recipe-grid-section">
+      <h2 class="section-label">— 最近追加したレシピ —</h2>
+      <div class="recipe-grid" id="latest-grid"></div>
+      <div class="see-all-wrap">
+        <a href="recipes.html" class="see-all-btn">すべてのレシピを見る →</a>
+      </div>
+    </section>
+
+    <!-- カテゴリショートカット -->
+    <section class="category-section">
+      <h2 class="section-label">— カテゴリから探す —</h2>
+      <div class="category-shortcuts">
+        <a class="shortcut-card" href="recipes.html?cat=お菓子・ケーキ">
+          <span class="shortcut-icon">🍰</span>
+          <span class="shortcut-label">お菓子・ケーキ</span>
+        </a>
+        <a class="shortcut-card" href="recipes.html?cat=肉料理">
+          <span class="shortcut-icon">🥩</span>
+          <span class="shortcut-label">肉料理</span>
+        </a>
+        <a class="shortcut-card" href="recipes.html?cat=カレー">
+          <span class="shortcut-icon">🍛</span>
+          <span class="shortcut-label">カレー</span>
+        </a>
+        <a class="shortcut-card" href="recipes.html?cat=ソース・たれ">
+          <span class="shortcut-icon">🫙</span>
+          <span class="shortcut-label">ソース・たれ</span>
+        </a>
+        <a class="shortcut-card" href="recipes.html?cat=炒め物">
+          <span class="shortcut-icon">🥘</span>
+          <span class="shortcut-label">炒め物</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><p>© My Recipe Notes</p></footer>
+
+  <script src="assets/js/recipes-data.js"></script>
+  <script>
+    const grid = document.getElementById('latest-grid');
+    RECIPES.slice(0, 3).forEach((r, i) => {
+      const a = document.createElement('a');
+      a.className = 'recipe-card';
+      a.href = r.url;
+      a.style.animationDelay = (i * 0.08) + 's';
+      a.innerHTML = `
+        <div class="card-tag">${r.tag}</div>
+        <h3 class="card-title">${r.title}</h3>
+        <p class="card-desc">${r.desc}</p>
+        <span class="card-arrow">→</span>
+      `;
+      grid.appendChild(a);
+    });
+  </script>
+</body>
+</html>

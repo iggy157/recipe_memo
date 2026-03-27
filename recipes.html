@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レシピ一覧 | My Recipe Notes</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">My Recipe Notes</a>
+      <div class="nav-links">
+        <a href="index.html">ホーム</a>
+        <a href="recipes.html" class="active">レシピ一覧</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HEADER ===== -->
+  <header class="page-header">
+    <div class="header-inner">
+      <p class="site-eyebrow">all recipes</p>
+      <h1 class="page-title">レシピ一覧</h1>
+    </div>
+  </header>
+
+  <!-- ===== SEARCH + FILTER ===== -->
+  <div class="filter-bar-wrap">
+    <div class="filter-bar">
+
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input
+          id="search-input"
+          class="search-input"
+          type="search"
+          placeholder="レシピ名・カテゴリで検索..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="category-filters" id="category-filters">
+        <button class="cat-btn active" data-cat="すべて">すべて</button>
+        <button class="cat-btn" data-cat="お菓子・ケーキ">お菓子・ケーキ</button>
+        <button class="cat-btn" data-cat="肉料理">肉料理</button>
+        <button class="cat-btn" data-cat="カレー">カレー</button>
+        <button class="cat-btn" data-cat="ソース・たれ">ソース・たれ</button>
+        <button class="cat-btn" data-cat="炒め物">炒め物</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== GRID ===== -->
+  <main class="main-content">
+    <p class="result-count" id="result-count"></p>
+    <div class="recipe-grid" id="recipe-grid"></div>
+    <p class="no-result" id="no-result" style="display:none;">該当するレシピが見つかりませんでした。</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+  <script src="assets/js/recipes-data.js"></script>
+  <script>
+    const grid        = document.getElementById('recipe-grid');
+    const countEl     = document.getElementById('result-count');
+    const noResult    = document.getElementById('no-result');
+    const searchInput = document.getElementById('search-input');
+    const catBtns     = document.querySelectorAll('.cat-btn');
+
+    let currentCat  = 'すべて';
+    let currentQuery = '';
+
+    function renderCards(list) {
+      grid.innerHTML = '';
+      if (list.length === 0) {
+        noResult.style.display = 'block';
+        countEl.textContent = '';
+        return;
+      }
+      noResult.style.display = 'none';
+      countEl.textContent = list.length + ' 件';
+      list.forEach((r, i) => {
+        const a = document.createElement('a');
+        a.className = 'recipe-card';
+        a.href = r.url;
+        a.style.animationDelay = (i * 0.05) + 's';
+        a.innerHTML = `
+          <div class="card-tag">${r.tag}</div>
+          <h3 class="card-title">${r.title}</h3>
+          <p class="card-desc">${r.desc}</p>
+          <span class="card-arrow">→</span>
+        `;
+        grid.appendChild(a);
+      });
+    }
+
+    function applyFilters() {
+      let list = RECIPES;
+      if (currentCat !== 'すべて') {
+        list = list.filter(r => r.category === currentCat);
+      }
+      if (currentQuery) {
+        const q = currentQuery.toLowerCase();
+        list = list.filter(r =>
+          r.title.toLowerCase().includes(q) ||
+          r.category.toLowerCase().includes(q) ||
+          r.tag.toLowerCase().includes(q) ||
+          r.desc.toLowerCase().includes(q)
+        );
+      }
+      renderCards(list);
+    }
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.dataset.cat;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', e => {
+      currentQuery = e.target.value.trim();
+      applyFilters();
+    });
+
+    // URLパラメータでカテゴリ初期選択に対応 (?cat=肉料理 など)
+    const params = new URLSearchParams(location.search);
+    const initCat = params.get('cat');
+    if (initCat) {
+      catBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === initCat);
+      });
+      currentCat = initCat;
+    }
+
+    applyFilters();
+  </script>
+
+</body>
+</html>
