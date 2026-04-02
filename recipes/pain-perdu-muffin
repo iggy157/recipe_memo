@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パンペルデュ・マフィン | My Recipe Notes</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">muffin — pain perdu 式</p>
+    <h1>パンペルデュ・マフィン</h1>
+    <p class="recipe-tagline">アーモンドとヨーグルトが生む、しっとりフレンチトーストのような食感。<br>混ぜるだけ、寝かせなくていい、気軽な一品。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <!-- Meta -->
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">3〜6個分（型による）</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">焼き時間</span>
+        <span class="meta-value">約18〜23分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">焼き温度</span>
+        <span class="meta-value">220℃ → 170℃</span>
+      </div>
+    </div>
+
+    <!-- Ingredients -->
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+      <ul class="ingredients-list">
+        <li>
+          <span class="ing-name">薄力粉</span>
+          <span class="ing-amount">24 g</span>
+        </li>
+        <li>
+          <span class="ing-name">ベーキングパウダー</span>
+          <span class="ing-amount">1 g弱</span>
+        </li>
+        <li>
+          <span class="ing-name">アーモンドパウダー</span>
+          <span class="ing-amount">20 g</span>
+        </li>
+        <li>
+          <span class="ing-name">砂糖</span>
+          <span class="ing-amount">45 g</span>
+        </li>
+        <li>
+          <span class="ing-name">卵白</span>
+          <span class="ing-amount">35 g（約1個分）</span>
+        </li>
+        <li>
+          <span class="ing-name">ヨーグルト</span>
+          <span class="ing-amount">40 g</span>
+        </li>
+        <li>
+          <span class="ing-name">溶かしマーガリン</span>
+          <span class="ing-amount">30 g</span>
+        </li>
+        <li>
+          <span class="ing-name">牛乳</span>
+          <span class="ing-amount">20 g</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">粉類を混ぜる</p>
+            <p class="step-text">
+              ボウルに薄力粉、ベーキングパウダー、アーモンドパウダー、砂糖を入れてホイッパーでよく混ぜ合わせる。
+              ふるいにかけなくてもよいが、ダマがあれば軽くほぐしておく。
+            </p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">濡れ材料を加える</p>
+            <p class="step-text">
+              粉類のボウルに卵白とヨーグルトを加え、ゴムベラまたはホイッパーでざっくり混ぜる。
+              <strong>泡立てる必要はない。</strong>卵白は軽くほぐしてから加えると混ぜやすい。
+              粉気がなくなればOK。
+            </p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">マーガリンと牛乳を加える</p>
+            <p class="step-text">
+              溶かしたマーガリンを加えて全体がなめらかになるまで混ぜる。
+              続けて牛乳を加えてさらに混ぜる。生地はやや緩めのぼてっとした状態が正常。
+            </p>
+            <p class="step-point">※ 生地が硬すぎる場合は牛乳を小さじ1ずつ足して調整する。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">型に流し込む</p>
+            <p class="step-text">
+              オーブンを220℃に予熱する。
+              マフィン型またはカップケーキ型に生地を7〜8分目まで流し込む。
+              型にはマーガリンを薄く塗るか、グラシン紙を使う。
+            </p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <p class="step-title">高温スタート → 温度を下げて焼く</p>
+            <p class="step-text">
+              220℃で5〜8分焼き、表面に焦げ目がついてきたら170℃に下げる。
+              さらに13〜15分焼いて、竹串を刺して何もついてこなければ完成。
+              最初の高温で表面をこんがり固め、低温で中をじっくり仕上げるイメージ。
+            </p>
+            <span class="step-timer">⏱ 合計 約18〜23分</span>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">6</span>
+          <div class="step-content">
+            <p class="step-title">粗熱を取る</p>
+            <p class="step-text">
+              型から出して網の上で冷ます。
+              冷めるとしっとり感が増してさらに美味しくなる。
+            </p>
+            <span class="step-timer">⏱ 10〜15分</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Notes -->
+    <section class="notes-block">
+      <h2 class="section-title">メモ・ポイント</h2>
+      <ul class="notes-list">
+        <li>フィナンシェと違い一晩寝かせなくてOK。その日のうちに焼ける手軽さが魅力。</li>
+        <li>アーモンドパウダーのおかげでフィナンシェに近いコクと風味が出る。減らすとただのマフィンになるので減らさないほうがいい。</li>
+        <li>ヨーグルトはBPと反応してふんわり感が出る。プレーンで無糖のものを使う。</li>
+        <li>マーガリンの代わりに溶かし無塩バターにすると風味が格段にアップする。</li>
+        <li>牛乳は生地の硬さ調整用。いつもの全卵のときと同じくらいのとろっと感になればちょうどいい。</li>
+        <li>卵白が余ったら冷凍保存可。製氷皿に1個分ずつ入れておくと便利。</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
