@@ -6,6 +6,14 @@
  */
 const RECIPES = [
   {
+  title:    "パンペルデュ・マフィン アレンジ帖",
+  url:      "recipes/pain-perdu-muffin-arrange.html",
+  category: "アレンジ",
+  tag:      "番外編",
+  desc:     "クランブル土台・冷凍ガナッシュ・色づき改善など、水分量そのままで試せるモジュール式アレンジガイド。おすすめ組み合わせ4選付き。",
+  date:     "2026-04-10",
+  },
+  {
   title:    "あんかけ焼きそば",
   url:      "recipes/ankake-yakisoba.html",
   category: "麵",
