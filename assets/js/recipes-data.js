@@ -15,7 +15,7 @@ const RECIPES = [
   },
   {
   title:    "キムチスパゲッティ",
-  url:      "recipes/kimchi-spaghetti.html",
+  url:      "recipes/kimuchi-spaghetti.html",
   category: "スパゲッティ",
   tag:      "パスタ",
   desc:     "マヨネーズで絡めてすき焼きのタレとキムチを合わせる。天かすのザクッとした食感がやみつきに。追い天かすも忘れずに。",
@@ -26,12 +26,12 @@ const RECIPES = [
   url:      "recipes/napolitan.html",
   category: "スパゲッティ",
   tag:      "パスタ",
-  desc:     "みりん×コンソメでケチャップに深みをプラス。マーガリンとウスターが喫茶店の味に仕上げてくれる。",
+  desc:     "デミグラスソースとコンソメでケチャップに深みをプラス。マーガリンとウスターが喫茶店の味に仕上げてくれる。",
   date:     "2026-04-10",
   },
   {
   title:    "アメリカンソースのオムライス",
-  url:      "recipes/omurice.html",
+  url:      "recipes/omelet-rice.html",
   category: "卵料理",
   tag:      "オムライス",
   desc:     "甘酸っぱいアメリカンソースとふわとろ卵のコンビ。ケチャップライスはマーガリンを最後に入れるのが塩味を残すコツ。",
