@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アメリカンソースのオムライス | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a4f2e;
+      --brown-light: #b07d55;
+      --cream: #fdf8f2;
+      --text: #2e2017;
+      --muted: #8a7560;
+      --border: #e5d9c8;
+      --step-bg: #faf4ec;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ── Header ── */
+    .recipe-header {
+      background: var(--brown);
+      color: #fff;
+      text-align: center;
+      padding: 56px 24px 48px;
+    }
+
+    .recipe-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+      margin-bottom: 12px;
+    }
+
+    .recipe-header h1 {
+      font-size: clamp(22px, 5vw, 34px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .recipe-tagline {
+      font-size: 13px;
+      opacity: 0.82;
+      line-height: 1.9;
+    }
+
+    /* ── Body ── */
+    .recipe-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      opacity: 0.7;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── Meta ── */
+    .recipe-meta {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .meta-item {
+      flex: 1;
+      text-align: center;
+      padding: 16px 8px;
+      border-right: 1px solid var(--border);
+    }
+    .meta-item:last-child { border-right: none; }
+
+    .meta-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--brown);
+      border-bottom: 2px solid var(--brown);
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Ingredients ── */
+    .ingredients-block { margin-bottom: 56px; }
+
+    .ing-subhead {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--brown-light);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .ingredients-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:nth-child(even) { background: var(--step-bg); }
+
+    .ing-name { color: var(--text); }
+    .ing-amount { color: var(--brown); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+
+    /* ── Steps ── */
+    .steps-block { margin-bottom: 56px; }
+
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+
+    .step-item {
+      display: flex;
+      gap: 20px;
+      background: var(--step-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 20px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .step-content { flex: 1; }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+
+    .step-text {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .step-point {
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(122,79,46,0.06);
+      border-left: 3px solid var(--brown-light);
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.75;
+    }
+
+    /* ── Method blocks ── */
+    .method-block {
+      margin-bottom: 16px;
+      padding: 14px 14px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .method-block:last-child { margin-bottom: 0; }
+
+    .method-label {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--brown);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Notes ── */
+    .notes-block { margin-bottom: 56px; }
+
+    .notes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .notes-list li {
+      font-size: 14px;
+      padding-left: 20px;
+      position: relative;
+      color: var(--text);
+    }
+    .notes-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--brown-light);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 28px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      .recipe-meta { flex-direction: column; }
+      .meta-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .meta-item:last-child { border-bottom: none; }
+      .step-item { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">omurice — 洋食屋の定番</p>
+    <h1>アメリカンソースのオムライス</h1>
+    <p class="recipe-tagline">甘酸っぱいアメリカンソースとふわとろ卵が絡む、<br>懐かしくてやみつきになる本格オムライス。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <!-- Meta -->
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">2人分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">調理時間</span>
+        <span class="meta-value">約30分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">難易度</span>
+        <span class="meta-value">★★☆☆☆</span>
+      </div>
+    </div>
+
+    <!-- Ingredients -->
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+
+      <h3 class="ing-subhead">アメリカンソース</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">ケチャップ</span><span class="ing-amount">100 g</span></li>
+        <li><span class="ing-name">チキンコンソメ</span><span class="ing-amount">1/2 かけら</span></li>
+        <li><span class="ing-name">水（コンソメが溶ける程度）</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">砂糖</span><span class="ing-amount">大さじ 3</span></li>
+        <li><span class="ing-name">マーガリン</span><span class="ing-amount">大さじ 1</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">ケチャップライス</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">ご飯</span><span class="ing-amount">2人分</span></li>
+        <li><span class="ing-name">玉ねぎ</span><span class="ing-amount">1/2 個</span></li>
+        <li><span class="ing-name">鶏ささみ</span><span class="ing-amount">適量（小さめに切る）</span></li>
+        <li><span class="ing-name">ケチャップ</span><span class="ing-amount">5割（全体が色づく程度）</span></li>
+        <li><span class="ing-name">ウスターソース</span><span class="ing-amount">1割</span></li>
+        <li><span class="ing-name">デミグラスソース</span><span class="ing-amount">1割</span></li>
+        <li><span class="ing-name">マーガリン（香り付け用・最後に投入）</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">塩こしょう</span><span class="ing-amount">少々</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">卵</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">卵（1人前 1.5個〜）</span><span class="ing-amount">3〜4 個</span></li>
+      </ul>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">アメリカンソースを作る</p>
+            <p class="step-text">
+              小鍋にケチャップ・砂糖・チキンコンソメを入れ、コンソメが溶ける程度の水を加える。
+              弱火で加熱しながら混ぜる。<strong>水はどうせ飛ぶので多少多くてもOK。</strong>
+              全体がなじんでとろみが出たら最後にマーガリンを加え、溶けたら完成。
+            </p>
+            <p class="step-point">💡 砂糖多めの甘酸っぱい仕上がりがこのソースの肝。ケチャップライスとのバランスを取るため、ここでしっかり甘みをつける。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">ケチャップライスを作る</p>
+            <p class="step-text">
+              フライパンに油を熱し、玉ねぎを炒める。しんなりしたら<strong>ささみを小さめのひと口大に切って投入。</strong>
+              塩こしょうで下味をつけ、火が通ったらご飯を加える。
+              ケチャップ：ウスター：デミグラス＝<strong>5：1：1</strong>の割合で加え、全体が均一に色づくまで炒め合わせる。
+              仕上げにマーガリンを加え、香りが立ったら火を止める。
+            </p>
+            <div class="method-block">
+              <p class="method-label">⚠️ マーガリンのタイミングについて</p>
+              <p class="step-text" style="margin-bottom:0;">
+                最初に入れると塩味が飛んで味がぼやけるため、<strong>必ず最後に投入</strong>すること。最後に入れることで香りと塩味が残る。
+              </p>
+            </div>
+            <p class="step-point">💡 調味料は「全体が色づく程度」が目安。後からアメリカンソースをかけるため、ライス単体では少し薄いくらいでちょうどいい。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">卵を焼く</p>
+            <p class="step-text">
+              卵を溶きほぐし、フライパンを<strong>強火</strong>でしっかり熱してから流し入れる。
+              菜箸で<strong>中央に軽く寄せるように混ぜながら</strong>、同時にフライパンを揺すって卵がフライパン全体に行き渡るようにする。
+              半熟のうちに火を止める。
+            </p>
+            <p class="step-point">💡 強火・短時間が「ふわとろ」の鍵。加熱しすぎると固くなるので、半熟のタイミングを見極めること。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">ライスを包んで仕上げる</p>
+            <p class="step-text">
+              半熟卵の<strong>中央にケチャップライスをのせ</strong>、卵を手前と奥から折り畳むようにして包む。
+              皿に滑らせるように盛り付け、形を整える。
+              上からアメリカンソースをたっぷりかけて完成。
+            </p>
+            <p class="step-point">💡 フライパンを傾けながら皿に落とすと、きれいな形に仕上がりやすい。多少崩れてもソースをかければ絵になる。</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- Notes -->
+    <section class="notes-block">
+      <h2 class="section-title">調理のコツまとめ</h2>
+      <ul class="notes-list">
+        <li>アメリカンソースは砂糖多めの甘酸っぱい仕上がりが目標</li>
+        <li>マーガリンは必ずケチャップライスの最後に投入（塩味を残すため）</li>
+        <li>ライスの調味はやや薄めに——ソースとのバランスが大事</li>
+        <li>卵は強火・短時間でふわとろに仕上げる</li>
+        <li>半熟のタイミングでライスをのせてすぐ包む</li>
+      </ul>
+    </section>
+
+    <!-- Shopping list -->
+    <section class="ingredients-block" style="margin-top:40px;">
+      <h2 class="section-title">買い物リスト・予算目安（税込）</h2>
+      <p class="step-text" style="margin-bottom:16px; font-size:13px; color:var(--muted);">※家にある食材がゼロの状態でスーパーで購入する想定</p>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">鶏ささみ（2〜3本）</span><span class="ing-amount">¥200</span></li>
+        <li><span class="ing-name">卵（10個パック）</span><span class="ing-amount">¥250</span></li>
+        <li><span class="ing-name">玉ねぎ（3個入り袋）</span><span class="ing-amount">¥180</span></li>
+        <li><span class="ing-name">ケチャップ（1本 500g）</span><span class="ing-amount">¥280</span></li>
+        <li><span class="ing-name">砂糖（1袋）</span><span class="ing-amount">¥200</span></li>
+        <li><span class="ing-name">チキンコンソメ（1箱）</span><span class="ing-amount">¥200</span></li>
+        <li><span class="ing-name">マーガリン（1個）</span><span class="ing-amount">¥220</span></li>
+        <li><span class="ing-name">ウスターソース（1本）</span><span class="ing-amount">¥180</span></li>
+        <li><span class="ing-name">デミグラスソース（1缶）</span><span class="ing-amount">¥280</span></li>
+        <li><span class="ing-name">塩こしょう</span><span class="ing-amount">¥200</span></li>
+        <li style="font-weight:600; border-top: 2px solid var(--brown); margin-top:4px;">
+          <span class="ing-name">合計（税込目安）</span>
+          <span class="ing-amount" style="color:var(--brown);">約 ¥2,190</span>
+        </li>
+      </ul>
+      <p class="step-point" style="margin-top:12px;">💡 調味料類は使い回しが効くため、2回目以降の実質コストは約430円程度。</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
