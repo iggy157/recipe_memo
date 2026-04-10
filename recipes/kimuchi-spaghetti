@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キムチスパゲッティ | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a4f2e;
+      --brown-light: #b07d55;
+      --cream: #fdf8f2;
+      --text: #2e2017;
+      --muted: #8a7560;
+      --border: #e5d9c8;
+      --step-bg: #faf4ec;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Serif JP', serif; background: var(--cream); color: var(--text); line-height: 1.8; font-size: 15px; }
+    .recipe-header { background: var(--brown); color: #fff; text-align: center; padding: 56px 24px 48px; }
+    .recipe-eyebrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; letter-spacing: 0.12em; opacity: 0.75; margin-bottom: 12px; }
+    .recipe-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 16px; }
+    .recipe-tagline { font-size: 13px; opacity: 0.82; line-height: 1.9; }
+    .recipe-body { max-width: 680px; margin: 0 auto; padding: 40px 20px 80px; }
+    .back-link { display: inline-block; font-size: 13px; color: var(--brown); text-decoration: none; margin-bottom: 32px; opacity: 0.7; }
+    .back-link:hover { opacity: 1; }
+    .recipe-meta { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 48px; }
+    .meta-item { flex: 1; text-align: center; padding: 16px 8px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { display: block; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .meta-value { display: block; font-size: 15px; font-weight: 600; color: var(--brown); }
+    .section-title { font-size: 18px; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); border-bottom: 2px solid var(--brown); padding-bottom: 8px; margin-bottom: 24px; }
+    .ingredients-block { margin-bottom: 56px; }
+    .ing-subhead { font-size: 13px; letter-spacing: 0.08em; color: var(--brown-light); font-weight: 600; margin-bottom: 10px; }
+    .ingredients-list { list-style: none; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .ingredients-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:nth-child(even) { background: var(--step-bg); }
+    .ing-name { color: var(--text); }
+    .ing-amount { color: var(--brown); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .steps-block { margin-bottom: 56px; }
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+    .step-item { display: flex; gap: 20px; background: var(--step-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; }
+    .step-num { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brown); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; font-size: 15px; color: var(--brown); margin-bottom: 8px; }
+    .step-text { font-size: 14px; line-height: 1.85; color: var(--text); margin-bottom: 8px; }
+    .step-point { font-size: 13px; color: var(--muted); background: rgba(122,79,46,0.06); border-left: 3px solid var(--brown-light); padding: 8px 12px; border-radius: 0 4px 4px 0; line-height: 1.75; }
+    .notes-block { margin-bottom: 56px; }
+    .notes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .notes-list li { font-size: 14px; padding-left: 20px; position: relative; color: var(--text); }
+    .notes-list li::before { content: '—'; position: absolute; left: 0; color: var(--brown-light); font-family: 'Cormorant Garamond', serif; }
+    .site-footer { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 480px) {
+      .recipe-meta { flex-direction: column; }
+      .meta-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .meta-item:last-child { border-bottom: none; }
+      .step-item { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">kimchi spaghetti — 和風アレンジ</p>
+    <h1>キムチスパゲッティ</h1>
+    <p class="recipe-tagline">マヨネーズでコクを出し、天かすのザクッとした食感がアクセント。<br>一人分をさっと仕上げる、やみつき系パスタ。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">1人分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">調理時間</span>
+        <span class="meta-value">約15分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">難易度</span>
+        <span class="meta-value">★☆☆☆☆</span>
+      </div>
+    </div>
+
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">スパゲッティ</span><span class="ing-amount">1人分</span></li>
+        <li><span class="ing-name">塩（茹で湯用）</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">マヨネーズ</span><span class="ing-amount">大さじ 1強</span></li>
+        <li><span class="ing-name">すき焼きのタレ</span><span class="ing-amount">一回し</span></li>
+        <li><span class="ing-name">キムチ</span><span class="ing-amount">50 g 程度</span></li>
+        <li><span class="ing-name">天かす</span><span class="ing-amount">お好みで（追い天かす用も）</span></li>
+      </ul>
+    </section>
+
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">パスタを茹でる</p>
+            <p class="step-text">
+              たっぷりのお湯に塩を加え、スパゲッティを表示時間通りに茹でる。
+            </p>
+            <p class="step-point">💡 塩加減が味の土台。湯に対して1%程度（1リットルに小さじ2弱）が目安。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">マヨネーズでパスタを和える</p>
+            <p class="step-text">
+              フライパンを<strong>中火</strong>で熱し、茹で上がったパスタを投入。
+              <strong>マヨネーズ大さじ1強</strong>を加え、パスタ全体に絡めるように炒め合わせる。
+            </p>
+            <p class="step-point">💡 マヨネーズが乳化剤の役割を果たし、具材と調味料をパスタにしっかり絡ませてくれる。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">タレとキムチを投入</p>
+            <p class="step-text">
+              <strong>すき焼きのタレを一回し</strong>加えて炒め合わせる。
+              続けて<strong>キムチ（50g程度）</strong>を投入し、全体をざっくり混ぜる。
+            </p>
+            <p class="step-point">💡 すき焼きのタレの甘辛みがキムチの酸味と好相性。タレの量はキムチの辛さに合わせて調整を。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">天かすを加えて仕上げる</p>
+            <p class="step-text">
+              天かすをお好みの量加え、<strong>ある程度しんなりしてきたら</strong>火を止めて完成。
+              皿に盛り付け、食べながら<strong>追い天かす</strong>してもOK。
+            </p>
+            <p class="step-point">💡 天かすはしんなりしすぎる前に食べ始めるのが吉。最初はザクッと、後からじわっと、2つの食感が楽しめる。</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="notes-block">
+      <h2 class="section-title">調理のコツまとめ</h2>
+      <ul class="notes-list">
+        <li>茹で湯の塩加減が味の土台——ここをケチらない</li>
+        <li>マヨネーズは絡める役割——炒めすぎず手早く</li>
+        <li>天かすはしんなりしかけたくらいが完成の目安</li>
+        <li>追い天かすで食感の変化を楽しむのもあり</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
