@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あんかけ焼きそば | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a4f2e;
+      --brown-light: #b07d55;
+      --cream: #fdf8f2;
+      --text: #2e2017;
+      --muted: #8a7560;
+      --border: #e5d9c8;
+      --step-bg: #faf4ec;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Serif JP', serif; background: var(--cream); color: var(--text); line-height: 1.8; font-size: 15px; }
+    .recipe-header { background: var(--brown); color: #fff; text-align: center; padding: 56px 24px 48px; }
+    .recipe-eyebrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; letter-spacing: 0.12em; opacity: 0.75; margin-bottom: 12px; }
+    .recipe-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 16px; }
+    .recipe-tagline { font-size: 13px; opacity: 0.82; line-height: 1.9; }
+    .recipe-body { max-width: 680px; margin: 0 auto; padding: 40px 20px 80px; }
+    .back-link { display: inline-block; font-size: 13px; color: var(--brown); text-decoration: none; margin-bottom: 32px; opacity: 0.7; }
+    .back-link:hover { opacity: 1; }
+    .recipe-meta { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 48px; }
+    .meta-item { flex: 1; text-align: center; padding: 16px 8px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { display: block; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .meta-value { display: block; font-size: 15px; font-weight: 600; color: var(--brown); }
+    .section-title { font-size: 18px; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); border-bottom: 2px solid var(--brown); padding-bottom: 8px; margin-bottom: 24px; }
+    .ingredients-block { margin-bottom: 56px; }
+    .ing-subhead { font-size: 13px; letter-spacing: 0.08em; color: var(--brown-light); font-weight: 600; margin-bottom: 10px; }
+    .ingredients-list { list-style: none; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .ingredients-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:nth-child(even) { background: var(--step-bg); }
+    .ing-name { color: var(--text); }
+    .ing-amount { color: var(--brown); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .steps-block { margin-bottom: 56px; }
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+    .step-item { display: flex; gap: 20px; background: var(--step-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; }
+    .step-num { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brown); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; font-size: 15px; color: var(--brown); margin-bottom: 8px; }
+    .step-text { font-size: 14px; line-height: 1.85; color: var(--text); margin-bottom: 8px; }
+    .step-point { font-size: 13px; color: var(--muted); background: rgba(122,79,46,0.06); border-left: 3px solid var(--brown-light); padding: 8px 12px; border-radius: 0 4px 4px 0; line-height: 1.75; }
+    .notes-block { margin-bottom: 56px; }
+    .notes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .notes-list li { font-size: 14px; padding-left: 20px; position: relative; color: var(--text); }
+    .notes-list li::before { content: '—'; position: absolute; left: 0; color: var(--brown-light); font-family: 'Cormorant Garamond', serif; }
+    .site-footer { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 480px) {
+      .recipe-meta { flex-direction: column; }
+      .meta-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .meta-item:last-child { border-bottom: none; }
+      .step-item { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">ankake yakisoba — 中華の定番</p>
+    <h1>あんかけ焼きそば</h1>
+    <p class="recipe-tagline">両面こんがりのかた焼きそばに、とろとろあんをたっぷりかける。<br>仕上げのラー油が味を引き締める本格の一皿。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">1〜2人分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">調理時間</span>
+        <span class="meta-value">約25分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">難易度</span>
+        <span class="meta-value">★★☆☆☆</span>
+      </div>
+    </div>
+
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+
+      <h3 class="ing-subhead">あん・具材</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">豚バラ肉</span><span class="ing-amount">適量（食べやすいサイズ）</span></li>
+        <li><span class="ing-name">白菜</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">水</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">鶏がらスープの素</span><span class="ing-amount">味を見ながら適量</span></li>
+        <li><span class="ing-name">ごま油</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">ラー油</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">水溶き片栗粉</span><span class="ing-amount">適量</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">麺</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">焼きそば用蒸し麺</span><span class="ing-amount">1〜2玉</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">仕上げ</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">ラー油（トッピング用）</span><span class="ing-amount">数滴（お好みで）</span></li>
+      </ul>
+    </section>
+
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">豚バラを炒める</p>
+            <p class="step-text">
+              豚バラを食べやすいサイズに切り、フライパンで炒める。
+              脂が出てきて表面に焼き色がついてきたら次の工程へ。
+            </p>
+            <p class="step-point">💡 豚バラの脂を先に出しておくことで、あん全体にコクが出る。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">白菜を加えて蒸し焼きにする</p>
+            <p class="step-text">
+              白菜を加え、<strong>水と鶏がらスープの素</strong>を投入する。
+              スープをひと口飲んで味を確認しながら鶏がらの量を調整する。
+              蓋をして<strong>蒸し焼き状態で10分以上</strong>、白菜が好みの食感になるまで加熱する。
+              仕上げに<strong>ごま油・ラー油</strong>を加えて風味をつける。
+            </p>
+            <p class="step-point">💡 鶏がらは一度に入れず、スープを飲みながら少しずつ足すのがコツ。白菜はくたっとさせたい派・シャキシャキ派で加熱時間を調整。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">麺をかた焼きそばに焼く</p>
+            <p class="step-text">
+              別のフライパンで蒸し麺を油を引いて焼く。
+              <strong>両面をこんがりと焼き</strong>、好みの焼き加減になったら皿に盛り付ける。
+            </p>
+            <p class="step-point">💡 あんをかけると麺が水分を吸うので、しっかりめにカリッと焼いておくのがおすすめ。弱〜中火でじっくり焼くと均一に仕上がる。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">あんにとろみをつけて完成</p>
+            <p class="step-text">
+              あんの味を最終確認して整える。
+              <strong>強火にしてから水溶き片栗粉を回し入れ</strong>、手早く混ぜてとろみをつける。
+              焼いた麺の上にたっぷりかけ、お好みでラー油を数滴たらして完成。
+            </p>
+            <p class="step-point">💡 片栗粉は必ず強火・沸騰した状態で入れること。弱火で入れるとダマになりやすい。回し入れながら素早くかき混ぜる。</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="notes-block">
+      <h2 class="section-title">調理のコツまとめ</h2>
+      <ul class="notes-list">
+        <li>鶏がらはスープを飲みながら少しずつ調整——入れすぎ注意</li>
+        <li>白菜の食感は好みで——10分以上を目安に蒸し焼き</li>
+        <li>麺はしっかりカリッと焼く——あんをかけても食感が残る</li>
+        <li>片栗粉は強火・沸騰状態で回し入れる——ダマ防止</li>
+        <li>仕上げのラー油数滴で一気に本格感が増す</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
