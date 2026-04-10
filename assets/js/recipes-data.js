@@ -6,6 +6,14 @@
  */
 const RECIPES = [
   {
+  title:    "あんかけ焼きそば",
+  url:      "recipes/ankake-yakisoba.html",
+  category: "麵",
+  tag:      "焼きそば",
+  desc:     "両面こんがりのかた焼きそばにとろとろあんをたっぷりかける。片栗粉は強火で回し入れるのがダマにならないコツ。",
+  date:     "2026-04-10",
+  },
+  {
   title:    "キムチスパゲッティ",
   url:      "recipes/kimchi-spaghetti.html",
   category: "スパゲッティ",
