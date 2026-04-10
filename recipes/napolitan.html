@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ナポリタン | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a4f2e;
+      --brown-light: #b07d55;
+      --cream: #fdf8f2;
+      --text: #2e2017;
+      --muted: #8a7560;
+      --border: #e5d9c8;
+      --step-bg: #faf4ec;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Serif JP', serif; background: var(--cream); color: var(--text); line-height: 1.8; font-size: 15px; }
+    .recipe-header { background: var(--brown); color: #fff; text-align: center; padding: 56px 24px 48px; }
+    .recipe-eyebrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; letter-spacing: 0.12em; opacity: 0.75; margin-bottom: 12px; }
+    .recipe-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 16px; }
+    .recipe-tagline { font-size: 13px; opacity: 0.82; line-height: 1.9; }
+    .recipe-body { max-width: 680px; margin: 0 auto; padding: 40px 20px 80px; }
+    .back-link { display: inline-block; font-size: 13px; color: var(--brown); text-decoration: none; margin-bottom: 32px; opacity: 0.7; }
+    .back-link:hover { opacity: 1; }
+    .recipe-meta { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 48px; }
+    .meta-item { flex: 1; text-align: center; padding: 16px 8px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { display: block; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .meta-value { display: block; font-size: 15px; font-weight: 600; color: var(--brown); }
+    .section-title { font-size: 18px; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); border-bottom: 2px solid var(--brown); padding-bottom: 8px; margin-bottom: 24px; }
+    .ingredients-block { margin-bottom: 56px; }
+    .ing-subhead { font-size: 13px; letter-spacing: 0.08em; color: var(--brown-light); font-weight: 600; margin-bottom: 10px; }
+    .ingredients-list { list-style: none; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .ingredients-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:nth-child(even) { background: var(--step-bg); }
+    .ing-name { color: var(--text); }
+    .ing-amount { color: var(--brown); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .steps-block { margin-bottom: 56px; }
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+    .step-item { display: flex; gap: 20px; background: var(--step-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; }
+    .step-num { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brown); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; font-size: 15px; color: var(--brown); margin-bottom: 8px; }
+    .step-text { font-size: 14px; line-height: 1.85; color: var(--text); margin-bottom: 8px; }
+    .step-point { font-size: 13px; color: var(--muted); background: rgba(122,79,46,0.06); border-left: 3px solid var(--brown-light); padding: 8px 12px; border-radius: 0 4px 4px 0; line-height: 1.75; }
+    .notes-block { margin-bottom: 56px; }
+    .notes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .notes-list li { font-size: 14px; padding-left: 20px; position: relative; color: var(--text); }
+    .notes-list li::before { content: '—'; position: absolute; left: 0; color: var(--brown-light); font-family: 'Cormorant Garamond', serif; }
+    .site-footer { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 480px) {
+      .recipe-meta { flex-direction: column; }
+      .meta-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .meta-item:last-child { border-bottom: none; }
+      .step-item { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">napolitan — 喫茶店の定番</p>
+    <h1>ナポリタン</h1>
+    <p class="recipe-tagline">みりん×コンソメで深みを出した、懐かしくて飽きない一皿。<br>マーガリンとウスターがケチャップの味を底上げする。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">1〜2人分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">調理時間</span>
+        <span class="meta-value">約20分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">難易度</span>
+        <span class="meta-value">★☆☆☆☆</span>
+      </div>
+    </div>
+
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+
+      <h3 class="ing-subhead">パスタ・具材</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">スパゲッティ</span><span class="ing-amount">1〜2人分</span></li>
+        <li><span class="ing-name">ソーセージ</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">玉ねぎ（薄切り）</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">油（炒め用）</span><span class="ing-amount">適量</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">ソース調味料</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">ケチャップ</span><span class="ing-amount">大さじ 5</span></li>
+        <li><span class="ing-name">みりん</span><span class="ing-amount">大さじ 1</span></li>
+        <li><span class="ing-name">チキンコンソメ</span><span class="ing-amount">小さじ 1</span></li>
+        <li><span class="ing-name">マーガリン</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">ウスターソース</span><span class="ing-amount">小さじ 1</span></li>
+      </ul>
+    </section>
+
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">具材を炒める</p>
+            <p class="step-text">
+              フライパンに油を熱し、<strong>薄切りにした玉ねぎとソーセージ</strong>を軽く炒める。
+              玉ねぎがしんなりしてきたらOK。
+            </p>
+            <p class="step-point">💡 玉ねぎは薄切りにすることでパスタとよく絡む。炒めすぎず、少し歯応えが残る程度に。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">パスタを茹でる</p>
+            <p class="step-text">
+              別鍋でスパゲッティを表示時間通りに茹でる。茹で上がったら湯を切っておく。
+            </p>
+            <p class="step-point">💡 具材の炒めと並行して進めると時短になる。茹で湯は少量取り置いておくと、後でソースが詰まりすぎたときに使える。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">パスタと具材を合わせて調味料を投入</p>
+            <p class="step-text">
+              炒めた具材のフライパンに茹で上がったパスタを加える。
+              <strong>ケチャップ大さじ5・みりん大さじ1・チキンコンソメ小さじ1・ウスターソース小さじ1・マーガリン</strong>を加え、
+              全体がよく絡むように炒め合わせて完成。
+            </p>
+            <p class="step-point">💡 みりんがケチャップの酸味をまろやかにし、コンソメが旨みの底上げをしてくれる。ウスターのスパイス感がアクセントに。</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="notes-block">
+      <h2 class="section-title">調理のコツまとめ</h2>
+      <ul class="notes-list">
+        <li>玉ねぎは薄切りで——パスタとの一体感が出る</li>
+        <li>みりんでケチャップの酸味をまろやかに</li>
+        <li>コンソメで旨みの深みをプラス</li>
+        <li>ウスターは少量で——入れすぎ注意</li>
+        <li>マーガリンでコクと香りを仕上げに加える</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
