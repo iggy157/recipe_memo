@@ -6,6 +6,22 @@
  */
 const RECIPES = [
   {
+  title:    "キムチスパゲッティ",
+  url:      "recipes/kimchi-spaghetti.html",
+  category: "スパゲッティ",
+  tag:      "パスタ",
+  desc:     "マヨネーズで絡めてすき焼きのタレとキムチを合わせる。天かすのザクッとした食感がやみつきに。追い天かすも忘れずに。",
+  date:     "2026-04-10",
+  },
+  {
+  title:    "ナポリタン",
+  url:      "recipes/napolitan.html",
+  category: "スパゲッティ",
+  tag:      "パスタ",
+  desc:     "みりん×コンソメでケチャップに深みをプラス。マーガリンとウスターが喫茶店の味に仕上げてくれる。",
+  date:     "2026-04-10",
+  },
+  {
   title:    "アメリカンソースのオムライス",
   url:      "recipes/omurice.html",
   category: "卵料理",
