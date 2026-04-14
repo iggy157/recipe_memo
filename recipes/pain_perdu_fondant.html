@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フォンダン・ドゥ・パンペルデュ | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f9f6f0;
+      --ink: #1e1a16;
+      --muted: #7a7060;
+      --accent: #3b2a1a;
+      --rule: #d6cfc4;
+      --chocolate: #2c1a0e;
+      --chocolate-light: #5c3d22;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    /* ── Header ── */
+    .recipe-header {
+      background: var(--chocolate);
+      color: var(--cream);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .recipe-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: .18em;
+      color: #c8a97a;
+      text-transform: lowercase;
+      margin-bottom: 14px;
+    }
+    .recipe-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 600;
+      letter-spacing: .06em;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .recipe-tagline {
+      font-size: 13px;
+      color: #c8b99a;
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Body ── */
+    .recipe-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 36px;
+      letter-spacing: .06em;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    /* ── Meta ── */
+    .recipe-meta {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 48px;
+    }
+    .meta-item {
+      flex: 1;
+      padding: 18px 12px;
+      text-align: center;
+      border-right: 1px solid var(--rule);
+    }
+    .meta-item:last-child { border-right: none; }
+    .meta-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .meta-value {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Component blocks ── */
+    .component-block {
+      margin-bottom: 48px;
+    }
+    .component-label {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: .1em;
+      color: var(--cream);
+      background: var(--chocolate-light);
+      padding: 3px 12px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Ingredients ── */
+    .ingredients-block {
+      margin-bottom: 48px;
+    }
+    .ingredients-list {
+      list-style: none;
+    }
+    .ingredients-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--rule);
+      font-size: 14px;
+    }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ing-name { color: var(--ink); }
+    .ing-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-left: 16px;
+    }
+    .ing-note {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .sub-section-title {
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--chocolate-light);
+      margin: 20px 0 10px;
+      font-weight: 600;
+    }
+
+    /* ── Steps ── */
+    .steps-block { margin-bottom: 48px; }
+    .steps-list { list-style: none; }
+    .step-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--chocolate-light);
+      line-height: 1.1;
+      padding-top: 2px;
+    }
+    .step-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .step-text {
+      font-size: 14px;
+      color: #3a3530;
+      line-height: 1.9;
+    }
+    .step-point {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      padding-left: 12px;
+      border-left: 2px solid var(--rule);
+    }
+    .step-timer {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+      letter-spacing: .06em;
+    }
+
+    /* ── Notes ── */
+    .notes-block { margin-bottom: 48px; }
+    .notes-list { list-style: none; }
+    .notes-list li {
+      font-size: 13px;
+      color: #4a4540;
+      line-height: 1.85;
+      padding: 8px 0 8px 16px;
+      border-bottom: 1px dotted var(--rule);
+      position: relative;
+    }
+    .notes-list li:last-child { border-bottom: none; }
+    .notes-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ── Variant badge ── */
+    .variant-note {
+      background: #f0ebe3;
+      border-left: 3px solid var(--chocolate-light);
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    .variant-note strong {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* ── Structure diagram ── */
+    .structure-diagram {
+      border: 1px solid var(--rule);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .structure-diagram .diagram-title {
+      font-size: 10px;
+      letter-spacing: .18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .layer {
+      padding: 10px 16px;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .layer-top    { background: #e8ddd0; }
+    .layer-batter { background: #f0e8da; }
+    .layer-ganache{ background: var(--chocolate-light); color: var(--cream); }
+    .layer-bottom { background: #d4c8b8; }
+    .layer-label  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .layer-ganache .layer-label { color: #c8a97a; }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+      letter-spacing: .1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">muffin — pain perdu × chocolat</p>
+    <h1>フォンダン・ドゥ・パンペルデュ</h1>
+    <p class="recipe-tagline">
+      パンペルデュ・マフィンのアレンジ版。<br>
+      サクサクのクレープフレークの底、潜むガナッシュ、アーモンドとレモンの余韻。<br>
+      表面には見えない仕掛けを、中に閉じ込めた。
+    </p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <div class="variant-note">
+      <strong>About this recipe</strong>
+      パンペルデュ・マフィンをベースに、チョコガナッシュ（チョコと生クリームのクリーム）を中心に仕込んだアレンジ版。
+      底にはサクサクのクレープフレーク（フイユティーヌ）の層、ガナッシュには粗塩（フルール・ド・セル）を忍ばせる。
+      生地にはバニラペーストとレモンの皮のすりおろしを加え、チョコに奥行きと切れを添える。
+    </div>
+
+    <!-- Structure -->
+    <div class="structure-diagram">
+      <p class="diagram-title">断面の構造イメージ</p>
+      <div class="layer layer-top">アーモンドスライス（表面）</div>
+      <div class="layer layer-batter">生地（バニラ・レモンゼスト入り）</div>
+      <div class="layer layer-ganache">
+        ガナッシュ（フルール・ド・セル入り）
+        <div class="layer-label">← 冷凍して仕込む</div>
+      </div>
+      <div class="layer layer-batter">生地（下層）</div>
+      <div class="layer layer-bottom">フイユティーヌ底（チョコで固める）</div>
+    </div>
+
+    <!-- Meta -->
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">3〜6個分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">焼き時間</span>
+        <span class="meta-value">約18〜23分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">焼き温度</span>
+        <span class="meta-value">220℃ → 170℃</span>
+      </div>
+    </div>
+
+    <!-- Ingredients -->
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+
+      <p class="sub-section-title">A. フイユティーヌ底</p>
+      <ul class="ingredients-list">
+        <li>
+          <span class="ing-name">
+            フイユティーヌ
+            <span class="ing-note">薄いクレープを焼いて砕いたサクサクのフレーク。製菓材料店やネットで購入できる。なければガレット・ブルトンヌ（バター風味の薄焼きクッキー）を砕いたもの、またはコーンフレークを細かく砕いたもので代用可</span>
+          </span>
+          <span class="ing-amount">20 g</span>
+        </li>
+        <li>
+          <span class="ing-name">チョコレート（カカオ65〜70%）</span>
+          <span class="ing-amount">20 g</span>
+        </li>
+      </ul>
+
+      <p class="sub-section-title">B. ガナッシュ（仕込み用）<span style="font-weight:400; color:var(--muted);">— チョコレートと生クリームを合わせた濃厚なチョコクリーム</span></p>
+      <ul class="ingredients-list">
+        <li>
+          <span class="ing-name">チョコレート（カカオ65〜70%）</span>
+          <span class="ing-amount">60 g</span>
+        </li>
+        <li>
+          <span class="ing-name">生クリーム（乳脂肪35%以上）</span>
+          <span class="ing-amount">30 g</span>
+        </li>
+        <li>
+          <span class="ing-name">
+            フルール・ド・セル
+            <span class="ing-note">フランス産の粗めの天然塩。なければ粗塩やあら塩でも可</span>
+          </span>
+          <span class="ing-amount">ひとつまみ</span>
+        </li>
+      </ul>
+      <div class="variant-note" style="margin-top:12px; margin-bottom:0;">
+        <strong>試作時の代用</strong>
+        メルティーキッスを半分にカットして冷凍したもので代用可。フルール・ド・セルはこの場合省略。
+        仕込みの位置確認・膨らみの検証に十分使える。
+      </div>
+
+      <p class="sub-section-title" style="margin-top:24px;">C. マフィン生地（アレンジ版）</p>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">薄力粉</span><span class="ing-amount">24 g</span></li>
+        <li><span class="ing-name">ベーキングパウダー</span><span class="ing-amount">1 g弱</span></li>
+        <li><span class="ing-name">アーモンドパウダー</span><span class="ing-amount">20 g</span></li>
+        <li><span class="ing-name">砂糖</span><span class="ing-amount">45 g</span></li>
+        <li><span class="ing-name">卵白</span><span class="ing-amount">35 g（約1個分）</span></li>
+        <li><span class="ing-name">ヨーグルト（プレーン・無糖）</span><span class="ing-amount">40 g</span></li>
+        <li><span class="ing-name">溶かしマーガリン（または無塩バター）</span><span class="ing-amount">30 g</span></li>
+        <li><span class="ing-name">牛乳</span><span class="ing-amount">20 g</span></li>
+        <li>
+          <span class="ing-name">
+            バニラペースト
+            <span class="ing-note">※オイルでも可。オイルの場合は量を気持ち多めに、混ぜたらすぐ焼く</span>
+          </span>
+          <span class="ing-amount">小さじ 1/2</span>
+        </li>
+        <li>
+          <span class="ing-name">
+            レモンゼスト（レモンの皮のすりおろし）
+            <span class="ing-note">果汁は不可。皮の表面の黄色い部分だけをおろし金で削る。白い部分まで削ると苦くなるので注意</span>
+          </span>
+          <span class="ing-amount">1/2個分</span>
+        </li>
+      </ul>
+
+      <p class="sub-section-title" style="margin-top:24px;">D. トッピング</p>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">アーモンドスライス</span><span class="ing-amount">適量</span></li>
+      </ul>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">ガナッシュを仕込んで冷凍する（前日または数時間前）</p>
+            <p class="step-text">
+              生クリームを小鍋で沸騰直前まで温め、刻んだチョコレートに注いでゴムベラでなめらかになるまでよく混ぜる。
+              フルール・ド・セル（粗塩）を加えてよく混ぜる。
+              シリコンマットや製氷皿に薄く流して（1cm程度の厚さ）冷凍庫で完全に固める。
+              固まったら型の内径より一回り小さいサイズに成形しておく。
+            </p>
+            <p class="step-point">
+              ※ 試作時はメルティーキッスを半分にカットして冷凍するだけでOK。
+              カット面は上向きに置くと沈みにくい。
+            </p>
+            <span class="step-timer">⏱ 冷凍 2時間以上（前日準備が理想）</span>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">フイユティーヌ底を作る</p>
+            <p class="step-text">
+              チョコレートを湯煎で溶かし、フイユティーヌ（薄焼きクレープのサクサクフレーク）と合わせてざっくり混ぜる。
+              型の底に2〜3mm程度の薄さで敷き、冷蔵庫で固める。
+            </p>
+            <p class="step-point">
+              ※ フイユティーヌが手に入らない場合は、バター風味の薄焼きクッキー（ガレット・ブルトンヌなど）を粗く砕いたものを使う。
+              試作段階ならコーンフレークを細かく砕いたもので代用可能。
+            </p>
+            <span class="step-timer">⏱ 冷蔵 20〜30分</span>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">生地を作る</p>
+            <p class="step-text">
+              ボウルに薄力粉、ベーキングパウダー、アーモンドパウダー、砂糖を入れてホイッパーでよく混ぜる。
+              卵白（軽くほぐす）とヨーグルトを加えてゴムベラでざっくり混ぜる。泡立て不要。
+              溶かしたマーガリンを加えてなめらかになるまで混ぜ、牛乳を加えてさらに混ぜる。
+              最後にバニラペーストとレモンゼストを加えてひと混ぜ。
+            </p>
+            <p class="step-point">
+              ※ バニラオイルを使う場合は、加えたらなるべく早く焼く（揮発防止）。
+            </p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">型に仕込む</p>
+            <p class="step-text">
+              オーブンを220℃に予熱する。
+              フイユティーヌ底が固まった型に、生地を半量（型の半分程度）流し込む。
+              冷凍ガナッシュを中央に置き、上から残りの生地をかぶせる。
+              ガナッシュが完全に見えなくなるまで生地でおおう（ガナッシュの上に最低1cmの生地層を確保する）。
+              オーブンに入れる直前にアーモンドスライスを表面に散らす。
+            </p>
+            <p class="step-point">
+              ※ ガナッシュが露出したままオーブンに入れると焦げる原因になるため、必ず生地でおおってから焼く。
+            </p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <p class="step-title">高温スタート → 温度を下げて焼く</p>
+            <p class="step-text">
+              220℃で5〜8分焼き、表面に焦げ目がついてきたら170℃に下げる。
+              さらに13〜15分焼く。竹串を刺して生地がついてこなければ完成。
+              中のガナッシュはこの段階で柔らかく溶けた状態になっている。
+            </p>
+            <span class="step-timer">⏱ 合計 約18〜23分</span>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">6</span>
+          <div class="step-content">
+            <p class="step-title">粗熱を取る</p>
+            <p class="step-text">
+              型から出して網の上で冷ます。
+              温かいうちが一番ガナッシュのとろみが出る。完全に冷ますとガナッシュが再凝固する。
+            </p>
+            <span class="step-timer">⏱ 5〜10分（温かいうちに食べる）</span>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- Notes -->
+    <section class="notes-block">
+      <h2 class="section-title">メモ・ポイント</h2>
+      <ul class="notes-list">
+        <li>ガナッシュは「とろんと流れ出る」よりも「割ると出てくる濃いポケット」をイメージする。この生地の構造上、外殻が薄いためフォンダンショコラ（中からチョコが流れ出る焼き菓子）ほどは流れない。それが本来のコンセプト。</li>
+        <li>フルール・ド・セル（粗塩）はガナッシュの中に混ぜ込む。表面に見えないところに塩を忍ばせることで、チョコと出会う瞬間に初めてわかる。トッピングとして上に散らすより体験に深みが出る。</li>
+        <li>レモンゼスト（皮のすりおろし）は果汁ではなくゼストのみ使用する。果汁の酸はベーキングパウダーの反応に影響するため避ける。皮の香りはアロマとして機能し、チョコの風味に切れを添える。</li>
+        <li>アーモンドスライスは焦げやすい。220℃スタート時に入れるため、オーブンに入れる直前に乗せる。気になるなら170℃に落としたタイミングで追加でも可。</li>
+        <li>フイユティーヌ底は焼成後も完全なサクサク感は残らない。「何かある」という食感の変化を出すための層。完璧なパイ生地の再現ではなく、底の対比として捉える。</li>
+        <li>チョコレートはカカオ65〜70%を推奨。ミルクチョコは甘くなりすぎて、ヨーグルト生地の酸と喧嘩する。</li>
+        <li>バターに変えるとアーモンドの風味がより際立ち、チョコとの相性がさらに上がる。</li>
+        <li>試作はメルティーキッスで十分。位置の確認、膨らみの検証、食感のバランスを掴んでから本番ガナッシュに移行する。</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
