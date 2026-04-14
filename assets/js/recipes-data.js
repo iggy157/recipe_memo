@@ -6,6 +6,14 @@
  */
 const RECIPES = [
   {
+  title:    "フォンダン・ドゥ・パンペルデュ",
+  url:      "recipes/pain_perdu_fondant.html",
+  category: "お菓子・ケーキ",
+  tag:      "マフィン",
+  desc:     "パンペルデュ・マフィンをベースにチョコガナッシュを仕込んだアレンジレシピ",
+  date:     "2026-04-14",
+  },
+  {
   title:    "パンペルデュ・マフィン アレンジ帖",
   url:      "recipes/pain-perdu-muffin-arrange.html",
   category: "アレンジ",
