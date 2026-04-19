@@ -6,6 +6,14 @@
  */
 const RECIPES = [
   {
+  title:    "プラリネ・クルスティヤン",
+  url:      "recipes/praline-croustillant.html",
+  category: "お菓子・ケーキ",
+  tag:      "カップケーキ",
+  desc:     "アーモンド生地 × 自家製プラリネ × 牛乳ガナッシュの三層構造。生クリーム不使用、塩粒で締める何個でも食べたい軽さ。",
+  date:     "2026-04-19",
+  },
+  {
   title:    "フォンダン・ドゥ・パンペルデュ",
   url:      "recipes/pain_perdu_fondant.html",
   category: "お菓子・ケーキ",
