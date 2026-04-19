@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プラリネ・クルスティヤン | My Recipe Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a4f2e;
+      --brown-light: #b07d55;
+      --cream: #fdf8f2;
+      --text: #2e2017;
+      --muted: #8a7560;
+      --border: #e5d9c8;
+      --step-bg: #faf4ec;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Serif JP', serif; background: var(--cream); color: var(--text); line-height: 1.8; font-size: 15px; }
+    .recipe-header { background: var(--brown); color: #fff; text-align: center; padding: 56px 24px 48px; }
+    .recipe-eyebrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; letter-spacing: 0.12em; opacity: 0.75; margin-bottom: 12px; }
+    .recipe-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 16px; }
+    .recipe-tagline { font-size: 13px; opacity: 0.82; line-height: 1.9; }
+    .recipe-body { max-width: 680px; margin: 0 auto; padding: 40px 20px 80px; }
+    .back-link { display: inline-block; font-size: 13px; color: var(--brown); text-decoration: none; margin-bottom: 32px; opacity: 0.7; }
+    .back-link:hover { opacity: 1; }
+    .recipe-meta { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 48px; }
+    .meta-item { flex: 1; text-align: center; padding: 16px 8px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { display: block; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .meta-value { display: block; font-size: 15px; font-weight: 600; color: var(--brown); }
+    .section-title { font-size: 18px; font-weight: 600; letter-spacing: 0.06em; color: var(--brown); border-bottom: 2px solid var(--brown); padding-bottom: 8px; margin-bottom: 24px; }
+    .ingredients-block { margin-bottom: 56px; }
+    .ing-subhead { font-size: 13px; letter-spacing: 0.08em; color: var(--brown-light); font-weight: 600; margin-bottom: 10px; }
+    .ingredients-list { list-style: none; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .ingredients-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:nth-child(even) { background: var(--step-bg); }
+    .ing-name { color: var(--text); }
+    .ing-amount { color: var(--brown); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .steps-block { margin-bottom: 56px; }
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+    .step-item { display: flex; gap: 20px; background: var(--step-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; }
+    .step-num { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--brown); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; font-size: 15px; color: var(--brown); margin-bottom: 8px; }
+    .step-text { font-size: 14px; line-height: 1.85; color: var(--text); margin-bottom: 8px; }
+    .step-point { font-size: 13px; color: var(--muted); background: rgba(122,79,46,0.06); border-left: 3px solid var(--brown-light); padding: 8px 12px; border-radius: 0 4px 4px 0; line-height: 1.75; }
+    .notes-block { margin-bottom: 56px; }
+    .notes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .notes-list li { font-size: 14px; padding-left: 20px; position: relative; color: var(--text); }
+    .notes-list li::before { content: '—'; position: absolute; left: 0; color: var(--brown-light); font-family: 'Cormorant Garamond', serif; }
+    .site-footer { text-align: center; padding: 28px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 480px) {
+      .recipe-meta { flex-direction: column; }
+      .meta-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .meta-item:last-child { border-bottom: none; }
+      .step-item { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="recipe-header">
+    <p class="recipe-eyebrow">praliné croustillant — 三層のプティ・ガトー</p>
+    <h1>プラリネ・クルスティヤン</h1>
+    <p class="recipe-tagline">アーモンド生地にザクザクのプラリネ層、薄く覆う牛乳ガナッシュ。<br>生クリーム不使用、何個でも食べられる軽さに仕上げる三層構造。</p>
+  </header>
+
+  <main class="recipe-body">
+    <a class="back-link" href="../index.html">← レシピ一覧へ</a>
+
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">分量</span>
+        <span class="meta-value">6個分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">調理時間</span>
+        <span class="meta-value">約2時間</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">難易度</span>
+        <span class="meta-value">★★★★☆</span>
+      </div>
+    </div>
+
+    <section class="ingredients-block">
+      <h2 class="section-title">材料</h2>
+
+      <h3 class="ing-subhead">① プログレ（アーモンド焼き生地）</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">卵白</span><span class="ing-amount">1個分（約35g）</span></li>
+        <li><span class="ing-name">グラニュー糖</span><span class="ing-amount">20g</span></li>
+        <li><span class="ing-name">アーモンドプードル</span><span class="ing-amount">30g</span></li>
+        <li><span class="ing-name">粉砂糖</span><span class="ing-amount">15g</span></li>
+        <li><span class="ing-name">薄力粉</span><span class="ing-amount">5g</span></li>
+        <li><span class="ing-name">アルペンザルツ</span><span class="ing-amount">ひとつまみ</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">② 自家製プラリネペースト</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">生アーモンドダイス</span><span class="ing-amount">50g</span></li>
+        <li><span class="ing-name">グラニュー糖</span><span class="ing-amount">35g</span></li>
+        <li><span class="ing-name">水</span><span class="ing-amount">10g</span></li>
+        <li><span class="ing-name">アルペンザルツ</span><span class="ing-amount">ひとつまみ</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">③ プラリネ・クルスティヤン</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">プラリネペースト</span><span class="ing-amount">全量（約70g）</span></li>
+        <li><span class="ing-name">ダークチョコ</span><span class="ing-amount">30g</span></li>
+        <li><span class="ing-name">チョコクランチ</span><span class="ing-amount">25g</span></li>
+        <li><span class="ing-name">無塩バター</span><span class="ing-amount">10g</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">④ 牛乳ガナッシュ</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">ダークチョコ</span><span class="ing-amount">50g</span></li>
+        <li><span class="ing-name">牛乳</span><span class="ing-amount">40g</span></li>
+        <li><span class="ing-name">無塩バター</span><span class="ing-amount">15g</span></li>
+        <li><span class="ing-name">バニラオイル</span><span class="ing-amount">1〜2滴</span></li>
+      </ul>
+
+      <h3 class="ing-subhead" style="margin-top:24px;">⑤ 仕上げ・トッピング</h3>
+      <ul class="ingredients-list">
+        <li><span class="ing-name">アーモンドスライス</span><span class="ing-amount">適量</span></li>
+        <li><span class="ing-name">グラニュー糖（キャラメリゼ用）</span><span class="ing-amount">少量</span></li>
+        <li><span class="ing-name">粉砂糖</span><span class="ing-amount">少々</span></li>
+        <li><span class="ing-name">アルペンザルツ粒</span><span class="ing-amount">少々</span></li>
+      </ul>
+    </section>
+
+    <section class="steps-block">
+      <h2 class="section-title">作り方</h2>
+      <ol class="steps-list">
+
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <p class="step-title">プログレを焼く</p>
+            <p class="step-text">
+              オーブンを160℃に予熱する。卵白にグラニュー糖を3回に分けて加え、
+              <strong>ツヤのあるしっかりメレンゲ</strong>を立てる。アーモンドプードル・粉砂糖・薄力粉・塩をふるって合わせ、メレンゲに2回に分けて切るように混ぜる。
+              グラシン紙を敷いたマフィン型に厚さ1cm程度で絞るか広げる。<strong>160℃で18〜20分</strong>、表面がうっすら色づくまで焼く。完全に冷ます。
+            </p>
+            <p class="step-point">💡 メレンゲを潰さないように、ゴムベラで底からすくい上げるように混ぜる。潰れると焼き上がりがペタッとなる。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <p class="step-title">プラリネペーストを作る</p>
+            <p class="step-text">
+              フライパンに水10gとグラニュー糖35gを入れ、中火で<strong>琥珀色のキャラメル</strong>に煮詰める（混ぜずに鍋を揺するだけ）。
+              生アーモンドダイス50gと塩を加え、木べらで絡めながら香ばしくなるまで2〜3分炒る。ベーキングシートに広げて完全に冷ます。
+              冷めたらフードプロセッサーで粉砕。<strong>完全にペースト化しなくてOK</strong>、粗めの粒が残るくらいが理想。
+            </p>
+            <p class="step-point">💡 機械がなければポリ袋に入れて麺棒で叩き潰してもよい。粒の大きさで食感が決まるので、好みで調整するとよい。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <p class="step-title">アーモンドスライスをキャラメリゼ</p>
+            <p class="step-text">
+              アーモンドスライスに少量のグラニュー糖をまぶし、フライパンで乾煎りする。
+              <strong>薄茶色に色づいたら</strong>すぐに取り出してベーキングシートに広げ、完全に冷ます。
+            </p>
+            <p class="step-point">💡 焦げやすいので弱〜中火で。色づき始めたら一気に進むので目を離さない。仕上げのトッピング用。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <p class="step-title">プラリネ・クルスティヤンを作る</p>
+            <p class="step-text">
+              ダークチョコ30gとバター10gを湯せんで溶かす。
+              粗く砕いたプラリネペースト全量を加えてよく混ぜ、<strong>最後にチョコクランチ25gをさっくり</strong>混ぜ込む。
+            </p>
+            <p class="step-point">💡 チョコクランチは混ぜすぎると粉々になる。粒の存在感を残すのが食感の命。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <p class="step-title">第1層＋第2層を組み立てる</p>
+            <p class="step-text">
+              冷ましたプログレの上にクルスティヤンを<strong>カップ1個あたり15〜18g</strong>のせ、スプーンの背で平らに広げる。
+              冷蔵庫で<strong>30分以上</strong>冷やし固める。
+            </p>
+            <p class="step-point">💡 クルスティヤンは温かいうちに広げるのがコツ。冷えると固まって広げにくくなるので、作ったらすぐに組み立てる。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">6</span>
+          <div class="step-content">
+            <p class="step-title">牛乳ガナッシュを作る</p>
+            <p class="step-text">
+              牛乳40gを<strong>沸騰直前まで</strong>温め、刻んだダークチョコ50gに注ぐ。
+              30秒待ってから中心から静かに混ぜ、乳化したら室温のバター15gとバニラオイルを加えてなめらかにする。
+              少しとろみがつく温度（<strong>約30℃</strong>）まで冷ます。
+            </p>
+            <p class="step-point">💡 熱すぎるとクルスティヤン層を溶かし、冷えすぎると流れにくい。「少しとろっ」とする温度がベスト。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">7</span>
+          <div class="step-content">
+            <p class="step-title">上がけとトッピング</p>
+            <p class="step-text">
+              冷やしておいたカップのクルスティヤン面に、ガナッシュをスプーンで<strong>厚さ4〜5mm</strong>流し入れ、表面をならす。
+              <strong>固まる前（まだ柔らかいうち）</strong>に、キャラメリゼアーモンドスライス・砕いたチョコクランチ・塩粒2〜3粒を散らす。最後に粉砂糖をごく薄くふる。
+            </p>
+            <p class="step-point">💡 塩は粒のまま2〜3粒だけ。多すぎると全体が塩辛くなり、当たる瞬間のコントラストが消える。</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <span class="step-num">8</span>
+          <div class="step-content">
+            <p class="step-title">冷蔵庫で仕上げる</p>
+            <p class="step-text">
+              冷蔵庫で<strong>1時間以上</strong>冷やし固めて完成。
+              食べる<strong>15分前に常温に戻す</strong>と、クルスティヤンのパリッと感とガナッシュのなめらかさのコントラストが最大化する。
+            </p>
+            <p class="step-point">💡 保存は冷蔵で2日まで。プログレが吸湿するので長期保存には向かない。作ったらなるべく早めに食べ切る。</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="notes-block">
+      <h2 class="section-title">調理のコツまとめ</h2>
+      <ul class="notes-list">
+        <li>プラリネは粒度で食感が決まる——粗めに砕いてザクザク感を残す</li>
+        <li>クルスティヤンは温かいうちに広げる——冷えると固まって広がらない</li>
+        <li>ガナッシュの温度は約30℃が目安——熱すぎても冷えすぎてもNG</li>
+        <li>塩粒は2〜3粒だけ点在させる——多すぎると全体が塩辛くなる</li>
+        <li>食べる15分前に常温に戻す——食感のコントラストが最大化</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© My Recipe Notes</p>
+  </footer>
+
+</body>
+</html>
