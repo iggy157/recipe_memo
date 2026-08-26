@@ -47,14 +47,6 @@
 
       <div class="category-filters" id="category-filters">
         <button class="cat-btn active" data-cat="すべて">すべて</button>
-        <button class="cat-btn" data-cat="お菓子・ケーキ">お菓子・ケーキ</button>
-        <button class="cat-btn" data-cat="肉料理">肉料理</button>
-        <button class="cat-btn" data-cat="カレー">カレー</button>
-        <button class="cat-btn" data-cat="ソース・たれ">ソース・たれ</button>
-        <button class="cat-btn" data-cat="炒め物">炒め物</button>
-        <button class="cat-btn" data-cat="卵料理">卵料理</button>
-        <button class="cat-btn" data-cat="スパゲッティ">スパゲッティ</button>
-        <button class="cat-btn" data-cat="アレンジ">アレンジ</button>
       </div>
 
     </div>
@@ -77,7 +69,17 @@
     const countEl     = document.getElementById('result-count');
     const noResult    = document.getElementById('no-result');
     const searchInput = document.getElementById('search-input');
-    const catBtns     = document.querySelectorAll('.cat-btn');
+    const filterWrap  = document.getElementById('category-filters');
+
+    // 絞り込みボタンを CATEGORIES から生成（重複・表記ゆれ防止）
+    CATEGORIES.forEach(c => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-btn';
+      btn.dataset.cat = c.name;
+      btn.textContent = c.name;
+      filterWrap.appendChild(btn);
+    });
+    const catBtns = filterWrap.querySelectorAll('.cat-btn');
 
     let currentCat  = 'すべて';
     let currentQuery = '';
@@ -137,10 +139,12 @@
       applyFilters();
     });
 
-    // URLパラメータでカテゴリ初期選択に対応 (?cat=肉料理 など)
-    const params = new URLSearchParams(location.search);
+    // URLパラメータでカテゴリ初期選択に対応 (?cat=麺・パスタ など)
+    // 未知のカテゴリ名が来ても「すべて」に落として空表示にならないようにする
+    const params  = new URLSearchParams(location.search);
     const initCat = params.get('cat');
-    if (initCat) {
+    const known   = [...catBtns].some(btn => btn.dataset.cat === initCat);
+    if (initCat && known) {
       catBtns.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.cat === initCat);
       });

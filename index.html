@@ -43,49 +43,7 @@
     <!-- カテゴリショートカット -->
     <section class="category-section">
       <h2 class="section-label">— カテゴリから探す —</h2>
-      <div class="category-shortcuts">
-        <a class="shortcut-card" href="recipes.html?cat=お菓子・ケーキ">
-          <span class="shortcut-icon">🍰</span>
-          <span class="shortcut-label">お菓子・ケーキ</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=肉料理">
-          <span class="shortcut-icon">🥩</span>
-          <span class="shortcut-label">肉料理</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=カレー">
-          <span class="shortcut-icon">🍛</span>
-          <span class="shortcut-label">カレー</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=ソース・たれ">
-          <span class="shortcut-icon">🫙</span>
-          <span class="shortcut-label">ソース・たれ</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=炒め物">
-          <span class="shortcut-icon">🥘</span>
-          <span class="shortcut-label">炒め物</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=炒め物">
-          <span class="shortcut-icon">🥘</span>
-          <span class="shortcut-label">炒め物</span>
-        </a>
-        <!-- ↓ 追加 -->
-        <a class="shortcut-card" href="recipes.html?cat=卵料理">
-          <span class="shortcut-icon">🍳</span>
-          <span class="shortcut-label">卵料理</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=麺料理">
-          <span class="shortcut-icon">🍝</span>
-          <span class="shortcut-label">スパゲッティ</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=麺">
-          <span class="shortcut-icon">🍜</span>
-          <span class="shortcut-label">麺</span>
-        </a>
-        <a class="shortcut-card" href="recipes.html?cat=アレンジ">
-          <span class="shortcut-icon">✏️</span>
-          <span class="shortcut-label">アレンジ</span>
-        </a>
-      </div>
+      <div class="category-shortcuts" id="category-shortcuts"></div>
     </section>
 
   </main>
@@ -107,6 +65,19 @@
         <span class="card-arrow">→</span>
       `;
       grid.appendChild(a);
+    });
+
+    // カテゴリショートカットを CATEGORIES から生成（重複・表記ゆれ防止）
+    const shortcuts = document.getElementById('category-shortcuts');
+    CATEGORIES.forEach(c => {
+      const a = document.createElement('a');
+      a.className = 'shortcut-card';
+      a.href = 'recipes.html?cat=' + encodeURIComponent(c.name);
+      a.innerHTML = `
+        <span class="shortcut-icon">${c.icon}</span>
+        <span class="shortcut-label">${c.name}</span>
+      `;
+      shortcuts.appendChild(a);
     });
   </script>
 </body>
